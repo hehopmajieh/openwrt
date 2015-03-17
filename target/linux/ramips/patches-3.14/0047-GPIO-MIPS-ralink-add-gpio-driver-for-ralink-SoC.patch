@@ -396,7 +396,7 @@ Cc: linux-gpio@vger.kernel.org
 +	rg->chip.free = ralink_gpio_free;
 +
 +	/* set polarity to low for all lines */
-+	rt_gpio_w32(rg, GPIO_REG_POL, 0);
++	/*rt_gpio_w32(rg, GPIO_REG_POL, 0);*/
 +
 +	dev_info(&pdev->dev, "registering %d gpios\n", rg->chip.ngpio);
 +

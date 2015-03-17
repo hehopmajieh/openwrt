@@ -289,8 +289,8 @@ ramips_board_detect() {
 	*"VoCore")
 		name="vocore"
 		;;
-	*"OLinuXino-RT5350F")
-                name="olinuxino-rt5350f"
+	*"RT5350F-OLinuXino")
+                name="rt5350f-olinuxino"
                 ;;
 
 	*"W502U")

@@ -3,8 +3,8 @@
 /include/ "rt5350.dtsi"
 
 / {
-	compatible = "MPRA1", "ralink,rt5350-soc";
-	model = "HAME MPR-A1";
+	compatible = "RT5350F-OLINUXINO", "ralink,rt5350-soc";
+	model = "RT5350F-OLinuXino";
 
 	palmbus@10000000 {
 		spi@b00 {
@@ -40,31 +40,54 @@
 					reg = <0x50000 0x3b0000>;
 				};
 			};
-		};
-		gpio1: gpio@660 {
-			status = "okay";
+	
+			 spidev@1 {
+                                compatible = "linux,spidev";
+                                spi-max-frequency = <10000000>;
+                                reg = <1>;
+                        };
+	
 		};
 	};
+
 
 	pinctrl {
 		state_default: pinctrl0 {
+
+
 			gpio {
-				ralink,group = "i2c", "jtag", "rgmii", "mdio", "uartf", "led";
+				ralink,group = "jtag",  "uartf"";
 				ralink,function = "gpio";
 			};
+		
+			 phy_led {
+                                ralink,group = "led";
+                                ralink,function = "led";
+                        };
+			
+
+
 		};
 	};
 
-	ethernet@10100000 {
-		mtd-mac-address = <&factory 0x4>;
-	};
+	i2c@900 {
+                        status = "okay";
+                };
+
+	  ethernet@10100000 {
+                mtd-mac-address = <&factory 0x4>;
+                ralink,port-map = "wllll";
+        };
 
 	esw@10110000 {
 		ralink,portmap = <0x2f>;
 	};
 
+
 	wmac@10180000 {
+		status = "okay";
 		ralink,mtd-eeprom = <&factory 0>;
+		ralink,led-polarity = <1>;
 	};
 
 	ehci@101c0000 {
@@ -75,18 +98,20 @@
 		status = "okay";
 	};
 
+/*
 	gpio-leds {
 		compatible = "gpio-leds";
-		system {
-			label = "hame:blue:system";
-			gpios = <&gpio0 20 1>;
+		wan {
+			label = "rt5350f-olinuxino:orange:wan";
+			gpios = <&gpio0 22 1>;
 		};
-		power {
-			label = "hame:red:power";
-			gpios = <&gpio0 17 1>;
+		wan1 {
+			label = "rt5350f-olinuxino:green:wan";
+			gpios = <&gpio0 23 1>;
 		};
+		
 	};
-
+*/
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
@@ -99,19 +124,4 @@
 		};
 	};
 
-	gpio_export {
-		compatible = "gpio-export";
-		#size-cells = <0>;
-
-		usb {
-			gpio-export,name = "usb";
-			gpio-export,output = <1>;
-			gpios = <&gpio0 7 0>;
-		};
-		root_hub {
-			gpio-export,name = "root_hub";
-			gpio-export,output = <1>;
-			gpios = <&gpio0 12 0>;
-		};
-	};
 };

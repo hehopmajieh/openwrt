@@ -31,6 +31,7 @@
 		sysc@0 {
 			compatible = "ralink,rt5350-sysc", "ralink,rt3050-sysc";
 			reg = <0x0 0x100>;
+			ralink,uartmux = "gpio";
 		};
 
 		timer@100 {
@@ -279,7 +280,7 @@
 		interrupt-parent = <&cpuintc>;
 		interrupts = <6>;
 
-		ralink,eeprom = "soc_wmac.eeprom";
+	ralink,eeprom = "soc_wmac.eeprom";
 	};
 
 	ehci@101c0000 {

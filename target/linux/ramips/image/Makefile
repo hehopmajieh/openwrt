@@ -590,7 +590,7 @@ Image/Build/Profile/V22RW-2X2=$(call BuildFirmware/Default4M/$(1),$(1),v22rw-2x2
 
 Image/Build/Profile/VOCORE=$(call BuildFirmware/Default8M/$(1),$(1),vocore,VOCORE)
 
-Image/Build/Profile/OLINUXINO-RT5350F=$(call BuildFirmware/Default8M/$(1),$(1),olinuxino-rt5350f,OLINUXINO-RT5350F)
+Image/Build/Profile/RT5350F-OLINUXINO=$(call BuildFirmware/Default8M/$(1),$(1),rt5350f-olinuxino,RT5350F-OLINUXINO)
 
 Image/Build/Profile/W150M=$(call BuildFirmware/CustomFlashFactory/$(1),$(1),w150m,W150M,$(ralink_default_fw_size_4M),W150M Kernel Image,factory)
 
@@ -742,7 +742,7 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/UR-326N4G,$(1))
 	$(call Image/Build/Profile/V22RW-2X2,$(1))
 	$(call Image/Build/Profile/VOCORE,$(1))
-	$(call Image/Build/Profile/OLINUXINO-RT5350F,$(1))
+	$(call Image/Build/Profile/RT5350F-OLINUXINO,$(1))
 	$(call Image/Build/Profile/W150M,$(1))
 	$(call Image/Build/Profile/W306R_V20,$(1))
 	$(call Image/Build/Profile/W502U,$(1))

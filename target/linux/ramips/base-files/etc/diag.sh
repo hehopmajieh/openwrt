@@ -150,8 +150,8 @@ get_status_led() {
 	vocore)
 		status_led="vocore:green:status"
 		;;
-        olinuxino-rt5350f)
-                status_led="olinuxino-rt5350f:green:status"
+        rt5350f-olinuxino)
+                #status_led="rt5350f-olinuxino:green:status"
                 ;;
 
 	w306r-v20)
